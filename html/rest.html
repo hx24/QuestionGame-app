@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>现金问答游戏</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="rest_ctrl">
+	<div class="box">
+		<!-- 导航 -->
+		<div class="nav-box">现金问答游戏</div>
+		<!-- 导航 结束 -->
+		<!-- 内容 -->
+		<div class="content-box">
+			<!-- 题目间隔 -->
+			<div class="site-number">第<span ng-bind="round_index">一</span>场</div>
+			<div class="wait-animation">
+				<img src="images/animate.gif" alt="">
+			</div>
+			<p class="wait-text">第<span ng-bind="question_index"></span>题正在来的路上~</p>
+			<!-- 题目间隔 结束 -->
+		</div>
+		<!-- 内容 结束 -->
+		<!-- 底部 -->
+		<div class="footer-box">
+			<div class="footer-nav-box">
+				
+			</div>
+		</div>
+		<!-- 底部 结束 -->
+	</div>
+	<script type="text/javascript" src="js/fastclick.js" ></script>
+	<script type="text/javascript" src="js/angular.js" ></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="js/mui.min.js" ></script>
+	<script type="text/javascript" src="js/utils.js" ></script>
+	<script type="text/javascript" src="rest_controller.js" ></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>游戏即将开始</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="css/minirefresh.css" />
+	<link rel="stylesheet" href="css/style.css">
+	<link href="css/mui.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+	<div id="minirefresh" class="minirefresh-wrap" >
+	<div class="box mui-content minirefresh-scroll"  ng-controller="wait_ctrl">
+		<!-- 导航 -->
+		<span class="myBack mui-action-back"></span>
+		<div class="nav-box">现金问答游戏</div>
+		<!-- 导航 结束 -->
+		<!-- 内容 -->
+		<div class="content-box"> 
+			<!-- 等待 -->
+			<div class="site-number" ng-hide="noRound">第<span class="site_number" ng-bind="round_index">1</span>场</div>
+			<div class="site-number" ng-show="noRound">无场次</div>
+			<!--<div class="site-name" ng-bind="round_name"></div>-->
+			<div class="trailer-box">
+				<div class="trailer-item">
+					<p>本场奖金</p> 
+					<h1 ng-bind="round_reward">0</h1>
+				</div> 
+				<div class="trailer-item"> 
+					<p>开始时间</p> 
+					<h1 ng-bind="round_startdate">--:--</h1>
+				</div>
+				<div class="wait_second" ng-show="countDown"><span ng-bind="countDown" class="countDown_time">05:45:50</span>后开始答题</div>
+			</div>
+			<div class="bonus-title">瓜分奖金总额</div>
+			<div class="bonus-number"><span ng-bind="amount">0</span>元</div>
+			<div class="bonus-code">兑奖码：<span ng-bind="personid">1234567890</span></div>
+			
+			<ul class="bonus-list">
+				<li ng-repeat="history in historiess"><span>第<span ng-bind="roundIndexes[$index]">一</span>场</span><span class="tw">共答对<span ng-bind="history.answercount"></span>题</span><span class="dw">瓜分奖金<span ng-bind="history.coin">amount</span>元</span></li>
+			</ul>
+			
+			<div class="resurrection-box">
+				<div class="resurrection-card" ng-click="caidan()">
+					<span class="icon icon-heart-o"></span><span>复活卡</span><span ng-bind="resure">0</span><span>张</span>
+				</div>
+				<p>表演节目参与游戏可以获得复活卡</p>
+			</div>
+			<!-- 等待 结束 -->
+		</div>
+		<!-- 内容 结束 -->
+		<!-- 底部 -->
+		
+		<div class="footer-box">
+			<div class="footer-nav-box">
+				<a href="#" ng-click="toranking()">获奖排行</a>
+				<a href="#" ng-click="torule()">答题规则</a>
+			</div>
+		</div>
+		<!-- 底部 结束 -->
+	</div>
+	
+	</div>
+	
+	
+	<script type="text/javascript" src="js/fastclick.js" ></script>
+	<script type="text/javascript" src="js/angular.js" ></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="js/minirefresh.js" ></script>
+	<script type="text/javascript" src="js/layer/layer.js" ></script>
+	<script type="text/javascript" src="js/mui.min.js" ></script>
+	<script type="text/javascript" src="js/utils.js" ></script>
+	<script type="text/javascript" src="wait_controller.js" ></script>
+	
+</body>
+</html>

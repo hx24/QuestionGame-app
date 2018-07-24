@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>现金答题游戏</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="sign_ctrl">
+	<div class="box sign-bg">
+		<!-- 内容 -->
+		<div class="content-box">
+			<!-- 注册 -->
+			<div class="app-name">现金问答游戏</div>
+			<div class="input-box">
+				<p>吉/祥/如/意/中/国/年</p>
+				<input type="text" ng-model="nickname" placeholder="姓名(请填写真实姓名)">
+				<input type="number" ng-model="phoneno" placeholder="手机号(领奖时会以此手机号联系您)">
+				<input type="submit" ng-click="submit()" ng-value="loginbtn" class="sign_submit">
+			</div>
+			<!-- 注册 结束 -->
+		</div>
+		<!-- 内容 结束 -->
+		<!-- 底部 -->
+
+		<div class="footer-box">
+			<!--<a href="rule.html">答题规则</a>-->
+		</div>
+		<!-- 底部 结束 --> 
+	</div>
+    <script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/fastclick.js" ></script>
+	<script type="text/javascript" src="js/angular.js" ></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="js/layer/layer.js" ></script>
+	<script type="text/javascript" src="js/utils.js" ></script>
+	<script type="text/javascript" src="sign_controller.js" ></script>
+</body>
+</html>

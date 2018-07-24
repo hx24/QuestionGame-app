@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>答题开始</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body   ng-controller="answer_ctrl">
+	<div class="box">
+		<!-- 导航 -->
+		<div class="nav-box">答题开始</div>
+		<!-- 导航 结束 -->
+		<!-- 内容 -->
+		<div class="content-box">
+			<!-- 答题 -->
+			<div id="second" class="question-time" ng-bind="second">10</div>
+			<div class="question-number">第<span ng-bind="questionindex">1</span>题</div>
+			<a ng-show="result_second"><span ng-bind="result_second">10</span> 秒后开始接收下一题</a>
+			<div class="question-question">
+				<div class="question-content">
+					<p ng-bind="question">“夜阑卧听风吹雨，铁马冰河入梦来”是谁的诗句?</p>
+				</div>
+			</div>
+			
+			<ul class="question-list">   
+				<li ng-repeat="option in options" ng-class="{selected : selectOption==$index,error : erroOptione==$index , correct : correctOption ==$index}">
+					<input class="question-answer" type="button" ng-value="option" disabled="disabled">
+					<span class="selecte-number" ng-show="optionCounts.length>0"><span ng-bind="optionCounts[$index]">22</span>人</span>
+					<span class="icon" ng-click="select($index)" ng-class="{'icon-close' : erroOptione==$index}"></span>
+				</li>
+			</ul>
+			
+			<!-- 答题 结束 -->
+		</div>
+		<!-- 内容 结束 -->
+		<!-- 底部 -->
+		<div class="footer-box">
+			<div class="footer-nav-box">
+				
+			</div>
+		</div>
+		<!-- 底部 结束 -->
+	</div>
+	<script type="text/javascript" src="js/fastclick.js" ></script>
+	<script type="text/javascript" src="js/angular.js" ></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="js/layer/layer.js" ></script>
+	<script type="text/javascript" src="js/mui.min.js" ></script>
+	<script type="text/javascript" src="js/utils.js" ></script>
+	<script type="text/javascript" src="answer_controller.js" ></script>
+</body>
+</html>
