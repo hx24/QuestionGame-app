@@ -12,14 +12,14 @@ angular.module('myUtils', [])
 	.factory('myUtils', function($http) {
 		var factory = {};
 		factory.httppost = function(method, parameters) {
-			var myUrl = "http://192.168.1.137/user/" + method;
+			var myUrl = "http://192.168.1.123/user/" + method;
 			return $http.post(myUrl, parameters, {
 				withCredentials: true
 			});
 		}
 		factory.getQuestion = function(param) {
-			(function() {
-				factory.httppost("Question", para).success(function(data) {
+			(function getQuestion(param) {
+				factory.httppost("getQuestion", param).success(function(data) {
 					data = data.result;
 
 					if(angular.equals({}, data)) { //  result 是空对象
@@ -28,8 +28,7 @@ angular.module('myUtils', [])
 						}, 500)
 
 					} else {
-
-						if(data.stop) {
+						if(data.end) {	// 结束
 							location.href = "ranking.html";
 						} else {
 							//获取到了题目信息
@@ -42,7 +41,7 @@ angular.module('myUtils', [])
 
 				}).error(function(error) {
 					setTimeout(function() {
-						getQuestion(); // 请求失败，重新获取
+						getQuestion(param); // 请求失败，重新获取
 					}, 500)
 				});
 			})(param);

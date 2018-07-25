@@ -14,7 +14,7 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
    var question = JSON.parse(localStorage.getItem("currentQuestion"));
    var personid = JSON.parse(localStorage.getItem("personid"));
    var answerSecond = 0;  //回答问题的用时
-   var answer = 0;  // 回答的序号，0 未答  1，2，3 已选答案
+   var answer = 4;  // 回答的序号，4 未答  0,1，2，3 已选答案
    var clickFlag;
    
    if(question.isanswer){  
@@ -24,13 +24,13 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
    $scope.second = question.startsecond;
    $scope.questionindex = question.questionindex;
    $scope.question = question.question;
-   $scope.options = [question.option1,question.option2,question.option3];
+   $scope.options = question.answers;
   
   $scope.select = function (index) {
 //	clickFlag = true
   	if(clickFlag){  
   		$scope.selectOption = index;
-  		answer = index+1;  
+  		answer = index;  
   		clickFlag = false;	 //已选择后，不可修改
  
   		if($scope.second == "结束"){
@@ -76,20 +76,20 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
 	 
 	var fn_submitAnswer = function () {
 		var paraAnswer = {
-			personid : personid,  //用户ID
-			roundid : question.roundid,   //场次ID
-			unitid : question.questionid,    // 题目ID
-			answersecond : answerSecond,  //回答用时
-			answer : answer   //结果    告诉服务，0为未作答
+			roundId : question.roundId,   //场次ID
+			questionId : question.questionid,    // 题目ID
+			questionIndex: question.questionindex-1,
+//			answersecond : answerSecond,  //回答用时
+			answer : answer   //结果    告诉服务，4为未作答
 		}
 		
 		console.log("开始提交答案"+question.questionindex);
 		console.log(JSON.stringify(paraAnswer));
 		
-		myUtils.httppost("Answer",paraAnswer).success(function (data) {
+		myUtils.httppost("commitAnswer",paraAnswer).success(function (data) {
 			data = data.result;
 			if(data.success == "OK"){
-				fn_getResult();
+//				fn_getResult();
 			}else{
 				console.log('由于某些错误，回答失败，您已出局')
 				layer.msg('由于某些错误，回答失败，您已出局', {
@@ -98,7 +98,7 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
 			}
 		}).error(function (error) {
 			console.log('网络错误，您已出局');
-			layer.msg('网络错误，您已出局', {
+			layer.msg('网络错误，答案提交失败，您已出局', {
 			  time: 2000 
 			}); 
 		})
@@ -110,11 +110,10 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
 	var fn_getResult = function () {
 		var paraResult = {
 			personid : personid,  //用户ID
-			roundid : question.roundid,   //场次ID
+			roundid : question.roundId,   //场次ID
 			unitid : question.questionid    // 题目ID
 		}
-		// 可以回答，请求答案
-		myUtils.httppost("Result",paraResult).success(function (data) {
+		myUtils.httppost("getResult",paraResult).success(function (data) {
 			data = data.result;
 			
 			if(angular.equals({},data)){  //没有请求到结果
@@ -125,12 +124,7 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
 				console.log("请求到result");
 				console.log(data);
 				
-				try{
-					$scope.correctOption = data.right-1;
-				}catch(e){
-					//TODO handle the exception
-					$scope.result_second = e.message;
-				}
+				$scope.correctOption = data.correct;
 				   
 				if($scope.correctOption != $scope.selectOption){
 					//用户选择了错误答案

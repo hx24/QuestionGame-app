@@ -26,20 +26,45 @@ var getQuestion-req = {
 
 var getQuestion-res = {
 	"result": {
-		"roundId": "",		// 
-		"questionid": "",	//
+		"end": false,   // 是否已结束
+		"questionindex": '当前题目索引',
+		"roundId": "",		//	场次id
+		"questionid": "",	//  改为了ID
 		"startsecond": 10, 	// 每道题的答题时间
-		"questionindex": 0,	//	?
 		"isanswer": true, 	// 是否可以答题   
-		"question": {
-			"answer0": "aaa",
-			"answer1": "bbb",
-			"answer2": "ccc",
-			"answer3": "ddd"
-		},
+		"answers": [],
 	}
 }
 
+
+var getAnswer-req = {
+	"roundId": "123",
+	"questionId": "",
+//	"answersecond": 5,  // 貌似没用
+	"answer": 1,	// 选择的答案 0,1,2,3   4未未作答
+}
+
+var getAnswer-res = {
+	"result": {
+		"success": "OK",	// 回答正确
+	}
+}
+
+
+var getResult-req = {
+	"roundId": "",
+	"questionId": ""
+}
+var getResult-res = {
+	"error":{		// 未出结果，否则未null或undefined
+		
+	},
+	"result": {
+		"correct": 1, 	// 正确答案
+		"answerCount": [32,10,13,6],	// 各选项选择的人数
+		
+	}
+}
 
 
 

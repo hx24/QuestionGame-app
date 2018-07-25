@@ -17,10 +17,9 @@ app.controller( "rest_ctrl" , function( $scope , myUtils ,$timeout) {
    $scope.roundName = roundData.title;
    
    $scope.question_index = question.questionindex+1;
-   
    var para = { 
    	roundId: roundData.ID,
-   	index: question_index   // 要请求的题目的索引
+   	index: question.questionindex   // 要请求的题目的索引
    };
 	myUtils.getQuestion(para);  //请求题目
   

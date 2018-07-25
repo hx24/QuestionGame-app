@@ -1,7 +1,6 @@
 var app = angular.module("wait_module", ["myUtils"]);
 
 app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
-	location.href = "rest.html";
 	$scope.amount = 0;
 
 	var flag = 1;
