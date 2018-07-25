@@ -2,7 +2,6 @@
 var app = angular.module("rest_module",["myUtils"]);
 
 app.controller( "rest_ctrl" , function( $scope , myUtils ,$timeout) {
-	
 	var question = localStorage.getItem("currentQuestion");
 
 	if (!question) {
@@ -15,11 +14,14 @@ app.controller( "rest_ctrl" , function( $scope , myUtils ,$timeout) {
     
     var roundData = JSON.parse(localStorage.getItem("roundData"));
    
-   $scope.round_index = roundData.roundindex;
+   $scope.roundName = roundData.title;
    
    $scope.question_index = question.questionindex+1;
    
-   var para = { personid: localStorage.getItem("personid") };
+   var para = { 
+   	roundId: roundData.ID,
+   	index: question_index   // 要请求的题目的索引
+   };
 	myUtils.getQuestion(para);  //请求题目
   
      mui.plusReady(function () {

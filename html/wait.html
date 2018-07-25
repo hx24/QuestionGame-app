@@ -18,7 +18,8 @@
 		<!-- 内容 -->
 		<div class="content-box"> 
 			<!-- 等待 -->
-			<div class="site-number" ng-hide="noRound">第<span class="site_number" ng-bind="round_index">1</span>场</div>
+			<!--<div class="site-number" ng-hide="noRound">第<span class="site_number" ng-bind="round_index">1</span>场</div>-->
+			<div class="site-number" ng-hide="noRound" ng-bind="roundName"></div>
 			<div class="site-number" ng-show="noRound">无场次</div>
 			<!--<div class="site-name" ng-bind="round_name"></div>-->
 			<div class="trailer-box">
@@ -34,7 +35,7 @@
 			</div>
 			<div class="bonus-title">瓜分奖金总额</div>
 			<div class="bonus-number"><span ng-bind="amount">0</span>元</div>
-			<div class="bonus-code">兑奖码：<span ng-bind="personid">1234567890</span></div>
+			<!--<div class="bonus-code">兑奖码：<span ng-bind="personid">1234567890</span></div>-->
 			
 			<ul class="bonus-list">
 				<li ng-repeat="history in historiess"><span>第<span ng-bind="roundIndexes[$index]">一</span>场</span><span class="tw">共答对<span ng-bind="history.answercount"></span>题</span><span class="dw">瓜分奖金<span ng-bind="history.coin">amount</span>元</span></li>
@@ -42,7 +43,7 @@
 			
 			<div class="resurrection-box">
 				<div class="resurrection-card" ng-click="caidan()">
-					<span class="icon icon-heart-o"></span><span>复活卡</span><span ng-bind="resure">0</span><span>张</span>
+					<span class="icon icon-heart-o"></span><span>复活卡</span><span ng-bind="revive">0</span><span>张</span>
 				</div>
 				<p>表演节目参与游戏可以获得复活卡</p>
 			</div>

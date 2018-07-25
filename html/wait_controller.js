@@ -1,9 +1,7 @@
 var app = angular.module("wait_module", ["myUtils"]);
 
 app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
-
-//	var personid = JSON.parse(localStorage.getItem("personid"));
-//	$scope.personid = personid;
+	location.href = "rest.html";
 	$scope.amount = 0;
 
 	var flag = 1;
@@ -13,14 +11,8 @@ app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
 	
 	localStorage.setItem("currentQuestion","");   //清空问题
 
-	$scope.roundIndexes = ["一", "二", "三"];
-	$scope.roundNames = ["福利场", "精英场", "英雄场"];
 	
 	var getPlayRoundTimes = 0;
-
-	var para = {
-//		personid: localStorage.getItem("personid")
-	};
 	
 	var getPlayRoundTimer;
 
@@ -30,23 +22,21 @@ app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
 			layerLoading = layer.load(2); 
 		}
 		
-		myUtils.httppost("PlayRound", para).success(function(data) {
+		myUtils.httppost("getRound").success(function(data) {
 			showLoading = false;
 			data = data.result;
-			console.log("PlayRound")
-			console.log(data)
 
 			var round = data.round;
 			var personinfo = data.personinfo;
 
 			if(round) { //有场次信息
 				$scope.noRound = false; 
-				$scope.round_index = round.roundindex;
-				localStorage.setItem("roundId", JSON.stringify(round.roundid));
+				$scope.roundName = round.title;
+				localStorage.setItem("roundId", JSON.stringify(round.ID));
 				localStorage.setItem("roundData", JSON.stringify(round));
-				$scope.round_reward = round.totalmoney;
-				$scope.round_startdate = round.startdate;
-				startCountdown(round.startdate);  //倒计时开始时间
+				$scope.round_reward = round.reward;
+				$scope.round_startdate = round.time;
+				startCountdown(round.time);  //倒计时开始时间
 //				myUtils.getQuestion(para); //请求题目
 			} else {
 				$scope.noRound = true;
@@ -64,7 +54,7 @@ app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
 			}
 
 			$scope.amount = personinfo.amount;
-			$scope.resure = personinfo.resure;
+			$scope.revive = personinfo.revive;
 			$scope.historiess = personinfo.history;
 		}).error(function() {
 			if(getPlayRoundTimes<2){  //自动请求3次，错误后提示
@@ -95,7 +85,7 @@ app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
 	$scope.caidan = function() {
 
 		if(flag % 2 == 0) {
-			if($scope.resure == 0) {
+			if($scope.revive == 0) {
 				layer.msg('有没有复活卡，心里没点B数吗?<br />(偷偷告诉你，上上下下左右左右ABAB可获得30张复活卡)', {
 					time: 3000 //1秒关闭（如果不配置，默认是3秒）
 				});
