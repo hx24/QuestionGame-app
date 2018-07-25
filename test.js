@@ -32,11 +32,11 @@ var getQuestion-res = {
 		"questionindex": 0,	//	?
 		"isanswer": true, 	// 是否可以答题   
 		"question": {
-			"option1": "aaa",
-			"option2": "bbb",
-			"option3": "ccc"
+			"answer0": "aaa",
+			"answer1": "bbb",
+			"answer2": "ccc",
+			"answer3": "ddd"
 		},
-		""
 	}
 }
 
