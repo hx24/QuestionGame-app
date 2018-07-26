@@ -68,4 +68,26 @@ var getResult-res = {
 }
 
 
+var getRank-req = {
+	// 无
+}
+
+var getRank-res = {
+	result: [
+		{
+			roundName: '场次1',
+			rank: [
+				{name:'黄鑫', phone: 13176862391,answercount:5,reward: 200},
+				{name:'黄鑫', phone: 13176862391,answercount:5,reward: 200},
+			]
+		},
+		{
+			roundName: '场次2',
+			rank: [
+				{name:'黄鑫', phone: 13176862391,answercount:5,reward: 200},
+				{name:'黄鑫', phone: 13176862391,answercount:5,reward: 200},
+			]
+		}
+	]
+}
 

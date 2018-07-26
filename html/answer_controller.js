@@ -89,7 +89,7 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
 		myUtils.httppost("commitAnswer",paraAnswer).success(function (data) {
 			data = data.result;
 			if(data.success == "OK"){
-//				fn_getResult();
+				fn_getResult();
 			}else{
 				console.log('由于某些错误，回答失败，您已出局')
 				layer.msg('由于某些错误，回答失败，您已出局', {
@@ -131,7 +131,7 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
 					$scope.erroOptione = $scope.selectOption;
 				}
 				
-				$scope.optionCounts = [ data.option1count, data.option2count, data.option3count];
+				$scope.optionCounts = data.answerCount;
 				$scope.result_second = 10;
 				
 				 var timer=$interval(function(){
