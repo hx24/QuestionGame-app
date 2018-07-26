@@ -53,7 +53,8 @@ var getAnswer-res = {
 
 var getResult-req = {
 	"roundId": "",
-	"questionId": ""
+	"questionId": "",
+	"questionIndex": 8
 }
 var getResult-res = {
 	"error":{		// 未出结果，否则未null或undefined

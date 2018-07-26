@@ -109,9 +109,9 @@ app.controller( "answer_ctrl" , function( $scope , myUtils ,$interval,$timeout) 
 	
 	var fn_getResult = function () {
 		var paraResult = {
-			personid : personid,  //用户ID
-			roundid : question.roundId,   //场次ID
-			unitid : question.questionid    // 题目ID
+			roundId : question.roundId,   //场次ID
+			questionId : question.questionid,    // 题目ID
+			questionIndex: question.questionindex-1
 		}
 		myUtils.httppost("getResult",paraResult).success(function (data) {
 			data = data.result;
