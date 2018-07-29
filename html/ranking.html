@@ -10,21 +10,21 @@
 	<div class="box">
 		<!-- 导航 -->
 		<span class="myBack" ng-click="back()"></span>
-		<div class="nav-box">获奖排行</div>
+		<div class="nav-box">今日获奖排行</div>
 		<!-- 导航 结束 -->
 		<!-- 内容 -->
 		<div class="content-box">
 			<!-- 获奖排行 -->
 			<div class="site-flip">
-				<button disabled class="button-left" ng-show="aRankDatas.length"><span class="icon-chevron-left"  ng-click="preview()"></span></button>
-				<span  ng-bind="roundName"></span>
-				<span  ng-hide="roundName">暂无数据</span>
-				<button class="button-right" ng-show="aRankDatas.length"><span class="icon-chevron-right"  ng-click="next()"></span></button>
+				<button ng-click="preview()" class="button-left" ng-show="currentIndex>0"><span class="icon-chevron-left"></span></button>
+				<span  ng-bind="currentRank.roundName||'暂无数据'"></span>
+				<!--<span  ng-hide="roundName">暂无数据</span>-->
+				<button ng-click="next()" class="button-right" ng-show="currentIndex<rankDatas.length-1"><span class="icon-chevron-right"></span></button>
 			</div>
 			<ul class="reward-list">
-				<li ng-repeat="rankData in aRankDatas track by $index ">
-					<div class="line"><div class="line-left" ng-bind="rankData.nickname"></div><div class="line-right"><span ng-bind="rankData.answercount"></span>道</div></div>
-					<div class="line"><div class="line-left" ng-bind="rankData.phoneno"></div><div class="line-right"><span ng-bind="rankData.coin"></span>元</div></div>
+				<li ng-repeat="userRank in currentRank.userRank track by $index ">
+					<div class="line"><div class="line-left" ng-bind="userRank.name"></div><div class="line-right"><span ng-bind="userRank.answercount"></span>道</div></div>
+					<div class="line"><div class="line-left" ng-bind="userRank.phone"></div><div class="line-right"><span ng-bind="userRank.reward"></span>元</div></div>
 				</li>
 			</ul>
 			<!-- 获奖排行 结束 -->
@@ -40,6 +40,7 @@
 	<script type="text/javascript" src="js/fastclick.js" ></script>
 	<script type="text/javascript" src="js/angular.js" ></script>
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="js/layer/layer.js" ></script>
 	<script type="text/javascript" src="js/utils.js" ></script>
 	<script type="text/javascript" src="js/mui.min.js" ></script>
 	<script type="text/javascript" src="ranking_controller.js" ></script>
