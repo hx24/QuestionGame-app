@@ -1,7 +1,7 @@
 var app = angular.module("wait_module", ["myUtils"]);
 
 app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
-	$scope.amount = 0;
+	$scope.rewardAll = 0;
 
 	var flag = 1;
 	var oldstartData;
@@ -52,7 +52,7 @@ app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
 				}, 30 * 1000);
 			}
 
-			$scope.amount = personinfo.amount;
+			$scope.rewardAll = personinfo.rewardAll;
 			$scope.revive = personinfo.revive;
 			$scope.historiess = personinfo.history;
 		}).error(function() {

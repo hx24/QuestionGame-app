@@ -34,11 +34,11 @@
 				<div class="wait_second" ng-show="countDown"><span ng-bind="countDown" class="countDown_time">05:45:50</span>后开始答题</div>
 			</div>
 			<div class="bonus-title">瓜分奖金总额</div>
-			<div class="bonus-number"><span ng-bind="amount">0</span>元</div>
+			<div class="bonus-number"><span ng-bind="rewardAll">0</span>元</div>
 			<!--<div class="bonus-code">兑奖码：<span ng-bind="personid">1234567890</span></div>-->
 			
 			<ul class="bonus-list">
-				<li ng-repeat="history in historiess"><span>第<span ng-bind="roundIndexes[$index]">一</span>场</span><span class="tw">共答对<span ng-bind="history.answercount"></span>题</span><span class="dw">瓜分奖金<span ng-bind="history.coin">amount</span>元</span></li>
+				<li ng-repeat="history in historiess"><span ng-bind="history.roundName"></span><span class="tw">共答对<span ng-bind="history.answercount"></span>题</span><span class="dw">瓜分奖金<span ng-bind="history.reward">amount</span>元</span></li>
 			</ul>
 			
 			<div class="resurrection-box">

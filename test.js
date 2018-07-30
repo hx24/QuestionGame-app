@@ -13,7 +13,7 @@ var round = {			// wait页面的请求，场次和个人信息
 			"history": [{
 				"roundName": "场次名称",
 				"answercount": 10,	 // 共答对几道题
-				"coin": 1000	// 瓜分奖金
+				"reward": 1000	// 瓜分奖金
 			}]
 		}
 	}
