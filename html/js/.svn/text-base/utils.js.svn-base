@@ -69,11 +69,10 @@ angular.module('myUtils', [])
 			var appname = "gsQuestion";    //获取当前这个程序的名称(或者说ID传递给服务器识别)
 			var updateUrl = "https://rd.chinags.com.cn/AutoUpdate.aspx";  //更新服务器地址
 			var devicetype = "";   //设备类型（ios或安卓） 在plusReady内检测
-			var localversion = "1.0.0";   //当前版本
 			
 			mui.plusReady(function() {  //mui.plusReady里的内容也只在电脑端执行
 				devicetype = plus.os.name;
-				localversion = plus.runtime.version;
+				var localversion = plus.runtime.version;
 				if(devicetype == 'iOS') {
 					devicetype = "ios";
 				} else {

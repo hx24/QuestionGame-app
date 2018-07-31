@@ -12,7 +12,7 @@ angular.module('myUtils', [])
 	.factory('myUtils', function($http) {
 		var factory = {};
 		factory.httppost = function(method, parameters) {
-			var myUrl = "http://192.168.1.137/user/" + method;
+			var myUrl = "http://118.24.4.200/user/" + method;
 			return $http.post(myUrl, parameters, {
 				withCredentials: true
 			});

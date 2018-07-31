@@ -240,11 +240,11 @@ ul {
 
 .question-time {
   display: inline-block;
-  width: 110px;
-  height: 110px;
-  line-height: 100px;
+  width: 80px;
+  height: 80px;
+  line-height: 70px;
   margin-top: 4%;
-  font-size: 60px;
+  font-size: 30px;
   border: 5px solid #ffb8b8;
   border-radius: 50%; }
 
@@ -256,7 +256,7 @@ ul {
 .question-question {
   display: table;
   width: 330px;
-  height: 110px;
+  height: 90px;
   margin: 0 auto; }
   .question-question .question-content {
     display: table-cell;
@@ -273,8 +273,8 @@ ul {
   width: 330px; }
   .question-list li {
     position: relative;
-    height: 60px;
-    line-height: 60px;
+    height: 55px;
+    line-height: 55px;
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 4px 4px 4px #810909;

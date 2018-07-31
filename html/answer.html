@@ -19,13 +19,14 @@
 			<a ng-show="result_second"><span ng-bind="result_second">10</span> 秒后开始接收下一题</a>
 			<div class="question-question">
 				<div class="question-content">
-					<p ng-bind="question">“夜阑卧听风吹雨，铁马冰河入梦来”是谁的诗句?</p>
+					<p ng-bind="question"></p>  
+					<!--最长35个字-->
 				</div>
 			</div>
 			
 			<ul class="question-list">   
-				<li ng-repeat="option in options" ng-class="{selected : selectOption==$index,error : erroOptione==$index , correct : correctOption ==$index}">
-					<input class="question-answer" type="button" ng-value="option" disabled="disabled">
+				<li ng-repeat="option in options track by $index" ng-class="{selected : selectOption==$index,error : erroOptione==$index , correct : correctOption ==$index}">
+					<input class="question-answer" type="button" ng-value="option" disabled="disabled">		<!--最长12个字-->
 					<span class="selecte-number" ng-show="optionCounts.length>0"><span ng-bind="optionCounts[$index]">22</span>人</span>
 					<span class="icon" ng-click="select($index)" ng-class="{'icon-close' : erroOptione==$index}"></span>
 				</li>
