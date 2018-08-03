@@ -126,11 +126,8 @@ app.controller("wait_ctrl", function($scope,$interval , $timeout , myUtils) {
 		var minutes = parseInt(leftTime / 1000 / 60 % 60, 10); //计算剩余的分钟
 		var seconds = parseInt(leftTime / 1000 % 60, 10); //计算剩余的秒数
 //		days = checkTime(days);
-		hours = checkTime(hours);
-		minutes = checkTime(minutes);
-		seconds = checkTime(seconds);
 		if(hours >= 0 || minutes >= 0 || seconds >= 0) {
-			$scope.countDown = hours+":"+minutes+":"+seconds;
+			$scope.countDown = checkTime(hours)+":"+checkTime(minutes)+":"+checkTime(seconds);
 		}
 
 		if(hours <= 0 && minutes <= 0 && seconds <= 0) {
